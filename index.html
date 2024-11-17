@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Go Photo Upload</title>
+    <script src="https://unpkg.com/htmx.org"></script>
+    <link rel="stylesheet" href="/static/css/main.css" />
+  </head>
+  <body>
+    <form
+      id="form"
+      hx-post="/upload"
+      hx-encoding="multipart/form-data"
+      hx-target="#images"
+      hx-swap="afterbegin"
+    >
+      <input type="file" name="file" />
+      <button type="submit">Submit</button>
+      <progress id="progress" value="0" max="100"></progress>
+    </form>
+    <div id="error" class="error"></div>
+
+    <hr />
+
+    <div id="images" class="images">
+      {{range $value := .Images}} {{ template "image" $value}} {{end}}
+    </div>
+
+    <script src="/static/js/main.js"></script>
+  </body>
+</html>
+
+{{ define "image" }}
+<div>
+  <img src="/images/{{.}}" alt="{{.}}" class="image" />
+</div>
+{{ end }}
