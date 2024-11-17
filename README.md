@@ -16,7 +16,7 @@ This is a website where you can upload photos. Developed in Go.
 
 ## Preview
 
-<img src="previews/preview.png" alt="preview">
+<img src="previews/preview.png" alt="preview" />
 
 ## Notes About the Project
 
